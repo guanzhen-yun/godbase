@@ -1,2 +1,2 @@
-include ':app', ':base', ':mvp', ':annotation', ':mvpapt'
+include ':app', ':base', ':mvp', ':mvpapt', ':annotation'
 rootProject.name='GodBase'
