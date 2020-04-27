@@ -13,10 +13,6 @@ import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 
-/**
- * 处理器
- */
-
 @AutoService(Processor.class)
 @SupportedAnnotationTypes({"com.ziroom.annotation.MvpEmptyViewFactory"})
 @SupportedSourceVersion(SourceVersion.RELEASE_8)

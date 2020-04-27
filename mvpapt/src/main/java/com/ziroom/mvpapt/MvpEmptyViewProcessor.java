@@ -22,10 +22,6 @@ import static javax.lang.model.element.Modifier.FINAL;
 import static javax.lang.model.element.Modifier.PUBLIC;
 import static javax.lang.model.element.Modifier.STATIC;
 
-/**
- * 处理器实际处理类
- */
-
 class MvpEmptyViewProcessor {
 
     void process(RoundEnvironment roundEnv, MvpProccesor processor) {
