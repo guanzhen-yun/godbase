@@ -27,6 +27,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     api project(path: ':base')
-    api project(path: ':mvpapt')
     annotationProcessor project(path: ':mvpapt')
 }
