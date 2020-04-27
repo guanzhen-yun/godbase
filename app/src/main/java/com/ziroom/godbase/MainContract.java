@@ -1,6 +1,5 @@
 package com.ziroom.godbase;
 
-import com.ziroom.annotation.MvpEmptyViewFactory;
 import com.ziroom.mvp.ILifeCircle;
 import com.ziroom.mvp.IMvpView;
 
@@ -10,7 +9,6 @@ import com.ziroom.mvp.IMvpView;
  * Description:MainContract contract
  **/
 public interface MainContract {
-    @MvpEmptyViewFactory
     interface IView extends IMvpView {
         void getMvpResult(String result);
     }
