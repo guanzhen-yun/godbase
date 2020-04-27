@@ -30,7 +30,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     //apt
     api project(path: ':annotation')
-    api project(path: ':mvpapt')
     annotationProcessor project(path: ':mvpapt')
     api project(path: ':mvp')
 }
