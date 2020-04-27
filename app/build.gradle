@@ -28,5 +28,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     api project(path: ':base')
+    //apt
+    implementation project(path: ':annotation')
     annotationProcessor project(path: ':mvpapt')
 }
