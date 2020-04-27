@@ -1,14 +1,36 @@
 package com.ziroom.godbase;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Toast;
 
-import android.os.Bundle;
+import com.ziroom.base.BaseActivity;
+import com.ziroom.base.ViewInject;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.OnClick;
+
+/**
+ * view
+ */
+
+@ViewInject(layoutId = R.layout.activity_main)
+public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.IView {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void afterBindView() {
+
+    }
+
+    @Override
+    public void getMvpResult(String result) {
+        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+    }
+
+    @OnClick(R.id.tv)
+    public void onViewClicked() {
+        mPresenter.sendMvpRequest();
+    }
+
+    @Override
+    public MainPresenter getPresenter() {
+        return new MainPresenter(this);
     }
 }
