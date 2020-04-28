@@ -4,7 +4,15 @@
 
 
 ~~~
-
-
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+	
+		dependencies {
+	        implementation 'com.github.guanzhen-yun.godbase:base:V1.0.8'
+	}
 
 ~~~
