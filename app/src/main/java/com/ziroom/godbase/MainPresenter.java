@@ -37,7 +37,7 @@ public class MainPresenter extends BaseMvpPresenter<MainContract.IView> implemen
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            getView().getMvpResult("我是测试数据");
+            mView.getMvpResult("我是测试数据");
         }
     };
 
