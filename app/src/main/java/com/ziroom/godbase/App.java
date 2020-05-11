@@ -1,15 +1,13 @@
 package com.ziroom.godbase;
 
 import android.app.Application;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.https.HttpsUtils;
 import com.ziroom.godbase.config.ConfigManager;
+import com.ziroom.godbase.config.LogUtils;
 import com.ziroom.godbase.config.ParamsInterceptor;
 import com.ziroom.godbase.config.SSLSocketClient;
-import com.ziroom.godbase.utils.LogUtils;
 import com.ziroom.net.RetrofitManager;
 
 import java.util.concurrent.TimeUnit;

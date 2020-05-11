@@ -1,9 +1,9 @@
-package com.ziroom.godbase.utils;
+package com.ziroom.godbase.config;
 
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.ziroom.godbase.BuildConfig;
+import com.ziroom.net.BuildConfig;
 
 
 /**
