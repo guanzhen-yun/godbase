@@ -8,39 +8,37 @@ import java.io.Serializable;
 public class Result<T> implements Serializable {
     private int error;
     private int code;
-    private String errcode;
-    private String errmsg;
     private T data;
-    private String message;
+    private String msg;
 
 
     public String getErrmsg() {
-        return errmsg;
+        return msg;
     }
 
 
     public void setErrmsg(String errmsg) {
-        this.errmsg = errmsg;
+        this.msg = errmsg;
     }
 
 
     public String getErrcode() {
-        return errcode;
+        return "" + code;
     }
 
 
-    public void setErrcode(String errcode) {
-        this.errcode = errcode;
+    public void setErrcode(int errcode) {
+        this.code = errcode;
     }
 
 
     public String getMessage() {
-        return message;
+        return msg;
     }
 
 
     public void setMessage(String message) {
-        this.message = message;
+        this.msg = message;
     }
 
 
