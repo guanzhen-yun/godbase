@@ -7,8 +7,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Author:关震
- * Date:2020/4/27 14:13
  * Description:MvpController presenter的控制器 绑定生命周期
  **/
 public class MvpController implements ILifeCircle {

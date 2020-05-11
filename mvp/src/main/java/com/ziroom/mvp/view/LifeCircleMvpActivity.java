@@ -11,8 +11,6 @@ import com.ziroom.mvp.IMvpView;
 import com.ziroom.mvp.MvpController;
 
 /**
- * Author:关震
- * Date:2020/4/27 14:29
  * Description:LifeCircleMvpActivity p层和Activity绑定
  **/
 public class LifeCircleMvpActivity extends AppCompatActivity implements IMvpView {

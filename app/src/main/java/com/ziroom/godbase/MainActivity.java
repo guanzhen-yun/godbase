@@ -15,11 +15,6 @@ import butterknife.OnClick;
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.IView {
 
     @Override
-    public void afterBindView() {
-
-    }
-
-    @Override
     public void getMvpResult(String result) {
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
     }

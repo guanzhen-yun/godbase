@@ -7,8 +7,6 @@ import com.ziroom.mvp.IMvpView;
 import com.ziroom.mvp.presenter.LifeCircleMvpPresenter;
 
 /**
- * Author:关震
- * Date:2020/4/27 14:21
  * Description:BaseMvpPresenter p层的中间类
  **/
 public abstract class BaseMvpPresenter <T extends IMvpView> extends LifeCircleMvpPresenter<T> {

@@ -11,6 +11,14 @@ android {
         versionName "1.0"
     }
     buildTypes {
+        debug {
+            ext.alwaysUpdateBuildId = false
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled false
+            buildConfigField("String", "DOMAIN_NAME", "\"http://api.abc.test\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -28,4 +36,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     api project(path: ':base')
+    api project(path: ':net')
+    api 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.zhy:okhttputils:2.6.2'
 }

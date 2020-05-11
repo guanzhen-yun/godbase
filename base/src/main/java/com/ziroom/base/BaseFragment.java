@@ -14,8 +14,6 @@ import com.ziroom.mvp.view.LifeCircleMvpFragment;
 import butterknife.ButterKnife;
 
 /**
- * Author:关震
- * Date:2020/4/27 14:03
  * Description:BaseFragment fragment基类
  **/
 public abstract class BaseFragment<T> extends LifeCircleMvpFragment {
@@ -39,7 +37,8 @@ public abstract class BaseFragment<T> extends LifeCircleMvpFragment {
             if (mainlayoutid > 0) {
                 mView = initFragmentView(inflater, mainlayoutid);
                 bindView(mView);
-                afterBindView();
+                fetchIntents(getArguments());
+                initViews(mView);
             } else {
                 throw new RuntimeException("mainlayoutid < 0");
             }
@@ -50,12 +49,37 @@ public abstract class BaseFragment<T> extends LifeCircleMvpFragment {
         return mView;
     }
 
+    /**
+     * 抓取参数
+     */
+
+    private void fetchIntents(Bundle bundle) {
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initDatas();
+    }
+
+    /**
+     * 初始化数据
+     */
+    private void initDatas() {
+
+    }
+
+    /**
+     * 初始化布局
+     */
+    private void initViews(View mView) {
+
+    }
+
     private View initFragmentView(LayoutInflater inflater, int mainlayoutid) {
         return inflater.inflate(mainlayoutid, null);
     }
-
-    //模板方法 设计模式
-    public abstract void afterBindView();
 
     //View 的依赖注入绑定
     private void bindView(View mView) {

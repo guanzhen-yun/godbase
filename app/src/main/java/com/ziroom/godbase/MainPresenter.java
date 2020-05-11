@@ -1,15 +1,17 @@
 package com.ziroom.godbase;
 
-import android.os.Handler;
-import android.os.Message;
-
-import androidx.annotation.NonNull;
-
+import com.ziroom.godbase.service.AppService;
 import com.ziroom.mvp.base.BaseMvpPresenter;
+import com.ziroom.net.ApiUtil;
+import com.ziroom.net.OnResponseListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import io.reactivex.disposables.Disposable;
 
 /**
- * Author:关震
- * Date:2020/4/27 15:03
  * Description:MainPresenter presenter
  **/
 public class MainPresenter extends BaseMvpPresenter<MainContract.IView> implements MainContract.IPresenter {
@@ -20,25 +22,18 @@ public class MainPresenter extends BaseMvpPresenter<MainContract.IView> implemen
 
     @Override
     public void sendMvpRequest() {
-        new Thread(new Runnable() {
+        Map<String, String> map = new HashMap<>();
+        ApiUtil.getResponse(ApiUtil.getService(AppService.class).getRequest(map), new OnResponseListener<ArrayList<Object>>() {
             @Override
-            public void run() {
-                try {
-                    Thread.sleep(3000);
-                    handler.sendEmptyMessage(0);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            public void onSubscribe(Disposable d) {
+                addDisposable(d);
             }
-        }).start();
-    }
 
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            super.handleMessage(msg);
-            getView().getMvpResult("我是测试数据");
-        }
-    };
+            @Override
+            public void onNext(ArrayList<Object> entity) {
+
+            }
+        });
+    }
 
 }

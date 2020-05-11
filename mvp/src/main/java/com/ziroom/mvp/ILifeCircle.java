@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 /**
- * Author:关震
- * Date:2020/4/27 14:09
  * Description:ILifeCircle 用到的生命周期
  **/
 public interface ILifeCircle {

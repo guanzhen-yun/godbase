@@ -7,8 +7,6 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Author:关震
- * Date:2020/4/27 14:54
  * Description:ViewInject 注入layout
  **/
 @Retention(RUNTIME) //运行时 注解

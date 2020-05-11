@@ -11,8 +11,6 @@ import com.ziroom.mvp.IMvpView;
 import com.ziroom.mvp.MvpController;
 
 /**
- * Author:关震
- * Date:2020/4/27 14:32
  * Description:LifeCircleMvpFragment p层和Fragment绑定
  **/
 public class LifeCircleMvpFragment extends Fragment implements IMvpView {

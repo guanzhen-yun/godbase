@@ -10,8 +10,6 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Author:关震
- * Date:2020/4/27 14:02
  * Description:BaseActivity Activity 基类
  **/
 public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
@@ -29,7 +27,9 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
             if(mainlayoutid > 0) {
                 setContentView(mainlayoutid);
                 bindView();
-                afterBindView();
+                fetchIntents();
+                initViews();
+                initDatas();
             } else {
                 throw new RuntimeException("mainlayoutid < 0");
             }
@@ -39,8 +39,24 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
         mPresenter = getPresenter();
     }
 
-    //模板方法 设计模式
-    public abstract void afterBindView();
+    /**
+     * 初始化数据
+     */
+    private void initDatas() {
+    }
+
+    /**
+     *初始化页面
+     */
+    private void initViews() {
+    }
+
+    /**
+     * 抓取参数
+     */
+    private void fetchIntents() {
+
+    }
 
     //View 的依赖注入绑定
     private void bindView() {

@@ -9,9 +9,10 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+
 /**
- * Author:关震
- * Date:2020/4/27 14:22
  * Description:LifeCircleMvpPresenter 带有生命周期的presenter
  **/
 public abstract class LifeCircleMvpPresenter <T extends IMvpView> implements ILifeCircle {
@@ -19,6 +20,7 @@ public abstract class LifeCircleMvpPresenter <T extends IMvpView> implements ILi
     private WeakReference<T> mWeakReference;
     protected T mView;
     private T mMvpView;
+    private final CompositeDisposable mDisposable = new CompositeDisposable();
 
     protected LifeCircleMvpPresenter() {
         super();
@@ -57,9 +59,14 @@ public abstract class LifeCircleMvpPresenter <T extends IMvpView> implements ILi
     public void onDestroy() {
         mMvpView = null;
         mWeakReference = null;
+        mDisposable.clear();
     }
 
     protected T getView() {
         return mView;
+    }
+
+    protected void addDisposable(Disposable disposable) {
+        mDisposable.add(disposable);
     }
 }
