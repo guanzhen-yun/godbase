@@ -53,7 +53,7 @@ public abstract class BaseFragment<T> extends LifeCircleMvpFragment {
      * 抓取参数
      */
 
-    private void fetchIntents(Bundle bundle) {
+    public void fetchIntents(Bundle bundle) {
 
     }
 
@@ -66,14 +66,14 @@ public abstract class BaseFragment<T> extends LifeCircleMvpFragment {
     /**
      * 初始化数据
      */
-    private void initDatas() {
+    public void initDatas() {
 
     }
 
     /**
      * 初始化布局
      */
-    private void initViews(View mView) {
+    public void initViews(View mView) {
 
     }
 

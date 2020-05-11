@@ -42,19 +42,19 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
     /**
      * 初始化数据
      */
-    private void initDatas() {
+    public void initDatas() {
     }
 
     /**
      *初始化页面
      */
-    private void initViews() {
+    public void initViews() {
     }
 
     /**
      * 抓取参数
      */
-    private void fetchIntents() {
+    public void fetchIntents() {
 
     }
 
