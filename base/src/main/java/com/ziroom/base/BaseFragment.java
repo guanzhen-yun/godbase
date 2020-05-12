@@ -37,6 +37,7 @@ public abstract class BaseFragment<T> extends LifeCircleMvpFragment {
             if (mainlayoutid > 0) {
                 mView = initFragmentView(inflater, mainlayoutid);
                 bindView(mView);
+                mPresenter = getPresenter();
                 fetchIntents(getArguments());
                 initViews(mView);
             } else {
@@ -45,7 +46,7 @@ public abstract class BaseFragment<T> extends LifeCircleMvpFragment {
         } else {
             throw new RuntimeException("annotation = null");
         }
-        mPresenter = getPresenter();
+
         return mView;
     }
 

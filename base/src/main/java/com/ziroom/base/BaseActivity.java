@@ -27,6 +27,7 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
             if(mainlayoutid > 0) {
                 setContentView(mainlayoutid);
                 bindView();
+                mPresenter = getPresenter();
                 fetchIntents();
                 initViews();
                 initDatas();
@@ -36,7 +37,7 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
         } else {
             throw new RuntimeException("annotation = null");
         }
-        mPresenter = getPresenter();
+
     }
 
     /**
