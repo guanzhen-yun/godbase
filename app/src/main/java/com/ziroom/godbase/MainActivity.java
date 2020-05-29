@@ -2,8 +2,9 @@ package com.ziroom.godbase;
 
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ziroom.base.BaseActivity;
-import com.ziroom.base.ViewInject;
+import com.ziroom.godbase.routers.RouterConstants;
 
 import butterknife.OnClick;
 
@@ -11,7 +12,7 @@ import butterknife.OnClick;
  * view
  */
 
-@ViewInject(layoutId = R.layout.activity_main)
+@Route(path = RouterConstants.App.Main)
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.IView {
 
     @Override
@@ -22,6 +23,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @OnClick(R.id.tv)
     public void onViewClicked() {
         mPresenter.sendMvpRequest();
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
     }
 
     @Override

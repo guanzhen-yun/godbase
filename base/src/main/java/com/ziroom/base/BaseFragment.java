@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 
 import com.ziroom.mvp.view.LifeCircleMvpFragment;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.ButterKnife;
 
 /**
@@ -20,6 +22,7 @@ public abstract class BaseFragment<T> extends LifeCircleMvpFragment {
 
     protected Context mContext;
     protected T mPresenter;
+    private boolean mIsRegistEventbus;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -31,20 +34,19 @@ public abstract class BaseFragment<T> extends LifeCircleMvpFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View mView = null;
-        ViewInject annotation = this.getClass().getAnnotation(ViewInject.class);
-        if (annotation != null) {
-            int mainlayoutid = annotation.layoutId();
-            if (mainlayoutid > 0) {
-                mView = initFragmentView(inflater, mainlayoutid);
-                bindView(mView);
-                mPresenter = getPresenter();
-                fetchIntents(getArguments());
-                initViews(mView);
-            } else {
-                throw new RuntimeException("mainlayoutid < 0");
-            }
+        mIsRegistEventbus = registEventBus();
+        if (mIsRegistEventbus) {
+            EventBus.getDefault().register(this);
+        }
+        int mainlayoutid = getLayoutId();
+        if (mainlayoutid > 0) {
+            mView = initFragmentView(inflater, mainlayoutid);
+            bindView(mView);
+            mPresenter = getPresenter();
+            fetchIntents(getArguments());
+            initViews(mView);
         } else {
-            throw new RuntimeException("annotation = null");
+            throw new RuntimeException("mainlayoutid < 0");
         }
 
         return mView;
@@ -89,5 +91,19 @@ public abstract class BaseFragment<T> extends LifeCircleMvpFragment {
 
     public T getPresenter() {
         return null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mIsRegistEventbus) {
+            EventBus.getDefault().unregister(this);
+        }
+    }
+
+    public abstract int getLayoutId();
+
+    public boolean registEventBus() {
+        return false;
     }
 }

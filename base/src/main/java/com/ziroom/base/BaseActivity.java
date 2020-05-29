@@ -6,6 +6,8 @@ import androidx.annotation.Nullable;
 
 import com.ziroom.mvp.view.LifeCircleMvpActivity;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -18,26 +20,26 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
 
     protected T mPresenter;
 
+    private boolean mIsRegistEventbus;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ViewInject annotation = this.getClass().getAnnotation(ViewInject.class);
-        if(annotation != null) {
-            int mainlayoutid = annotation.layoutId();
-            if(mainlayoutid > 0) {
-                setContentView(mainlayoutid);
-                bindView();
-                mPresenter = getPresenter();
-                fetchIntents();
-                initViews();
-                initDatas();
-            } else {
-                throw new RuntimeException("mainlayoutid < 0");
-            }
-        } else {
-            throw new RuntimeException("annotation = null");
+        mIsRegistEventbus = registEventBus();
+        if (mIsRegistEventbus) {
+            EventBus.getDefault().register(this);
         }
-
+        int mainlayoutid = getLayoutId();
+        if (mainlayoutid > 0) {
+            setContentView(mainlayoutid);
+            bindView();
+            mPresenter = getPresenter();
+            fetchIntents();
+            initViews();
+            initDatas();
+        } else {
+            throw new RuntimeException("mainlayoutid < 0");
+        }
     }
 
     /**
@@ -47,7 +49,7 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
     }
 
     /**
-     *初始化页面
+     * 初始化页面
      */
     public void initViews() {
     }
@@ -67,12 +69,21 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mUnbinder != null) {
+        if (mUnbinder != null) {
             mUnbinder.unbind();
+        }
+        if (mIsRegistEventbus) {
+            EventBus.getDefault().unregister(this);
         }
     }
 
+    public abstract int getLayoutId();
+
     public T getPresenter() {
         return null;
+    }
+
+    public boolean registEventBus() {
+        return false;
     }
 }

@@ -2,6 +2,7 @@ package com.ziroom.godbase;
 
 import android.app.Application;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.https.HttpsUtils;
 import com.ziroom.godbase.config.ConfigManager;
@@ -26,6 +27,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
+        ARouter.init(this);
         RetrofitManager.initClient(getOkhttpClient(), ConfigManager.getInstance().getHost());
         initNetInfo();
         initOkhttpUtils();
