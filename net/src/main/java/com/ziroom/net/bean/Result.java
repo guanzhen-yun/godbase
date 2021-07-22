@@ -9,18 +9,11 @@ public class Result<T> implements Serializable {
     private int error;
     private int code;
     private T data;
-    private String msg;
-
+    private String message;
 
     public String getErrmsg() {
-        return msg;
+        return message;
     }
-
-
-    public void setErrmsg(String errmsg) {
-        this.msg = errmsg;
-    }
-
 
     public String getErrcode() {
         return "" + code;
@@ -33,12 +26,12 @@ public class Result<T> implements Serializable {
 
 
     public String getMessage() {
-        return msg;
+        return message;
     }
 
 
     public void setMessage(String message) {
-        this.msg = message;
+        this.message = message;
     }
 
 
@@ -65,6 +58,5 @@ public class Result<T> implements Serializable {
     public void setData(T data) {
         this.data = data;
     }
-
 
 }

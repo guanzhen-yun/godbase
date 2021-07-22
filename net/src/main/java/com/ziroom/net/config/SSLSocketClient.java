@@ -1,4 +1,4 @@
-package com.ziroom.godbase.config;
+package com.ziroom.net.config;
 
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;

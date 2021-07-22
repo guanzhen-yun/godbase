@@ -3,19 +3,11 @@ package com.ziroom.godbase;
 import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.https.HttpsUtils;
-import com.ziroom.godbase.config.ConfigManager;
-import com.ziroom.godbase.config.LogUtils;
-import com.ziroom.godbase.config.ParamsInterceptor;
-import com.ziroom.godbase.config.SSLSocketClient;
+import com.ziroom.godbase.service.CommonParam;
+import com.ziroom.godbase.service.HeaderParam;
+import com.ziroom.godbase.service.Host;
+import com.ziroom.net.LogUtils;
 import com.ziroom.net.RetrofitManager;
-
-import java.util.concurrent.TimeUnit;
-
-import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  * Description:App
@@ -28,9 +20,7 @@ public class App extends Application {
         super.onCreate();
         app = this;
         ARouter.init(this);
-        RetrofitManager.initClient(getOkhttpClient(), ConfigManager.getInstance().getHost());
         initNetInfo();
-        initOkhttpUtils();
     }
 
     public static App getApp() {
@@ -38,37 +28,11 @@ public class App extends Application {
     }
 
     /**
-     * 创建OkHttpClient
-     */
-    private static OkHttpClient getOkhttpClient() {
-        HttpLoggingInterceptor.Logger logger =
-                (String message) -> LogUtils.d("OkHttp_Log", message);
-        OkHttpClient.Builder builder = RetrofitUrlManager.getInstance().with(new OkHttpClient.Builder()
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .writeTimeout(20, TimeUnit.SECONDS)
-                .addInterceptor(
-                        new HttpLoggingInterceptor(logger).setLevel(HttpLoggingInterceptor.Level.BODY))
-                .addInterceptor(new ParamsInterceptor()));
-
-        if (BuildConfig.DEBUG) {
-            builder.sslSocketFactory(SSLSocketClient.getSSLSocketFactory());
-            builder.hostnameVerifier(SSLSocketClient.getHostnameVerifier());
-        }
-        return builder.build();
-    }
-
-    private void initOkhttpUtils() {
-        //okhttp
-        HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager).build();
-        OkHttpUtils.initClient(okHttpClient);
-    }
-
-    /**
-     * 初始化域名信息
+     * 初始化网络信息
      */
     public static void initNetInfo() {
-        RetrofitUrlManager.getInstance().putDomain(RetrofitManager.DOMAIN_ABC_KEY, ConfigManager.getInstance().getHost());
+        LogUtils.debug = BuildConfig.DEBUG;
+        RetrofitManager.getInstance().setBaseUrl(Host.getCommonHost())
+                .setParams(HeaderParam.getHeaderParams(), CommonParam.getCommonParams()).init(Host.getHosts());
     }
 }

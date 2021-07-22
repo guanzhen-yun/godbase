@@ -1,9 +1,11 @@
 package com.ziroom.godbase;
 
+import com.ziroom.godbase.model.InkeListDo;
 import com.ziroom.godbase.service.AppService;
 import com.ziroom.mvp.base.BaseMvpPresenter;
 import com.ziroom.net.ApiUtil;
 import com.ziroom.net.OnResponseListener;
+import com.ziroom.net.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,15 +25,15 @@ public class MainPresenter extends BaseMvpPresenter<MainContract.IView> implemen
     @Override
     public void sendMvpRequest() {
         Map<String, String> map = new HashMap<>();
-        ApiUtil.getResponse(ApiUtil.getService(AppService.class).getRequest(map), new OnResponseListener<ArrayList<Object>>() {
+        ApiUtil.getResponse(ApiUtil.getService(AppService.class).getRequest(map), new OnResponseListener<ArrayList<InkeListDo>>() {
             @Override
             public void onSubscribe(Disposable d) {
                 addDisposable(d);
             }
 
             @Override
-            public void onNext(ArrayList<Object> entity) {
-
+            public void onNext(ArrayList<InkeListDo> entity) {
+                mView.getMvpResult("获取列表成功");
             }
         });
     }

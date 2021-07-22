@@ -10,8 +10,7 @@ import io.reactivex.functions.Function;
  * 没有返回body
  */
 public class HttpNoBodyFunc implements Function<Throwable, Observable<Result>> {
-    HttpNoBodyFunc() {
-    }
+    HttpNoBodyFunc() { }
 
     public Observable<Result> apply(Throwable throwable) {
         return Observable.error(ExceptionEngine.handleException(throwable));

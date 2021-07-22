@@ -1,4 +1,4 @@
-package com.ziroom.godbase.config;
+package com.ziroom.net.config;
 
 import android.os.Build;
 import android.text.TextUtils;
@@ -22,6 +22,14 @@ import okhttp3.Response;
  * 公共参数interceptor
  */
 public class ParamsInterceptor implements Interceptor {
+    private Map<String, String> mHeaders;
+    private Map<String, String> mCommonParams;
+
+    public ParamsInterceptor(Map<String, String> headers, Map<String, String> commonParams) {
+        mHeaders = headers;
+        mCommonParams = commonParams;
+    }
+
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
@@ -45,22 +53,19 @@ public class ParamsInterceptor implements Interceptor {
         }
         Map<String, String> addParams = new HashMap<>();
         //公共Header--目前只有一个token
-        String token = "token";
-        if (!TextUtils.isEmpty(token)) {
-            headerBuilder.add("x-auth-token", token);
-            addParams.put("token", token);
-            addParams.put("user_token", token);
+        if(mHeaders != null) {
+            for (String key : mHeaders.keySet()) {
+                headerBuilder.add(key, mHeaders.get(key));
+            }
         }
 
         requestBuilder.headers(headerBuilder.build());
         //公共参数
-        addParams.put("platformType", "4");
-        addParams.put("appName", "zgzf");
-        addParams.put("app_name", "zgzf");
-        addParams.put("s_os", "Android");
-        addParams.put("operaVersion", Build.VERSION.RELEASE);
-        addParams.put("platform_type", "4");
-        addParams.put("device_from", "4");
+        if(mCommonParams != null) {
+            for (String key : mCommonParams.keySet()) {
+                addParams.put(key, mCommonParams.get(key));
+            }
+        }
         //防止以前业务逻辑传递city不一样。
         if ("GET".equals(method)) {
             return injectParamsIntoUrl(request.url().newBuilder(), request.newBuilder(), addParams);

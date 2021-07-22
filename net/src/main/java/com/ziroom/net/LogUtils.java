@@ -1,9 +1,7 @@
-package com.ziroom.godbase.config;
+package com.ziroom.net;
 
 import android.text.TextUtils;
 import android.util.Log;
-
-import com.ziroom.net.BuildConfig;
 
 
 /**
@@ -12,7 +10,7 @@ import com.ziroom.net.BuildConfig;
 
 public class LogUtils {
     public static final String TAG = "LogUtils";
-    private static boolean debug = BuildConfig.DEBUG;
+    public static boolean debug = false;
 
     public static void d(String message) {
         if (TextUtils.isEmpty(message)) {

@@ -1,6 +1,6 @@
 package com.ziroom.godbase.service;
 
-import com.ziroom.net.RetrofitManager;
+import com.ziroom.godbase.model.InkeListDo;
 import com.ziroom.net.bean.Result;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import retrofit2.http.QueryMap;
  * Description:AppService
  **/
 public interface AppService {
-    @Headers({RetrofitManager.DOMAIN_ABC_HEADR})
-    @GET("/xx/abc")
-    Observable<Result<ArrayList<Object>>> getRequest(@QueryMap Map<String, String> map);
+    @Headers({Host.commonHostDomain})
+    @GET("inke/personList")
+    Observable<Result<ArrayList<InkeListDo>>> getRequest(@QueryMap Map<String, String> map);
 }
