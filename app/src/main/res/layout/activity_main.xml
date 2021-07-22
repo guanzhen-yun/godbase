@@ -14,4 +14,12 @@
         android:padding="30dp"
          />
 
+    <TextView
+        android:id="@+id/tv_exchange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="切换环境"
+        android:padding="30dp"
+        />
+
 </LinearLayout>
