@@ -25,6 +25,9 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(!isNotFitStatus()) {
+            StatusBarUtil.with(this).init();
+        }
         mIsRegistEventbus = registEventBus();
         if (mIsRegistEventbus) {
             EventBus.getDefault().register(this);
@@ -40,6 +43,10 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
         } else {
             throw new RuntimeException("mainlayoutid < 0");
         }
+    }
+
+    public boolean isNotFitStatus() {
+        return false;
     }
 
     /**
