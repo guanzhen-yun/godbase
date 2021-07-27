@@ -27,6 +27,7 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
         super.onCreate(savedInstanceState);
         if(!isNotFitStatus()) {
             StatusBarUtil.with(this).init();
+            findViewById(android.R.id.content).setPadding(0, StatusBarUtil.getStatusBarHeight(this), 0, 0);
         }
         mIsRegistEventbus = registEventBus();
         if (mIsRegistEventbus) {
