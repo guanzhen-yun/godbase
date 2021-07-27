@@ -45,7 +45,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     api project(path: ':base')
-    api project(path: ':net')
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2' //注解处理器，会将注解编译成Java类
 }

@@ -40,4 +40,5 @@ dependencies {
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
     api "com.google.android.material:material:1.1.0"
     api project(path: ':mvp')
+    api project(path: ':net')
 }
