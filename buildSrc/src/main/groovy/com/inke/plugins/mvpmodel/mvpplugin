@@ -1,0 +1,30 @@
+之前写MVP结构
+1.需要自己写Presenter Contract(通过复制 或者手动输入) 有时还需创建个文件夹包裹Activity/Fragemnt Contract Presenter
+2.需要实现/继承MVP的接口或者基类(BaseMvpPresenter BaseActivity BaseFragment)
+3.需要实现getPresenter(总会忘记 不实现 使用mPresenter会崩溃)
+4.需要自己创建layout布局文件 并绑定到Activity/Fragemnt
+5.需要Manifest上注册Activity
+
+好处:
+1.避免重复复制粘贴繁琐的步骤
+2.一键生成一个文件夹 三个文件（包括实现/继承MVP的接口或者基类） 外加一个布局文件
+3.自动注册Activity到清单文件
+4.自动实现getPresenter 避免出错
+
+使用方法:
+1.创建一个文件 如TestActivity
+2.获取到这个文件的全路径allPath
+3.获取到Manifest的路径
+
+如: allPath "app.src.main.java.com.inke.inkebone"
+    className "TextActivity"
+    manifestPath "app.src.main"
+4.根据所需设置isCreateNewPackage isCreateMvp
+5.在Tasks列表的selftask找到mvpModel 点击即可生成所需文件  (下次可以在历史task里面找到)
+6.isCreateNewPackage 是否需要创建新的文件夹 选择false则在该目录下创建 不生成新的文件夹
+7.isCreateMvp 是否需要创建Mvp架构 选择false则生成普通的文件
+
+注意事项:
+1.确保Manifest里面存在application标签
+2.确保存在layout文件夹 没有创建一个
+3.生成完文件 Manifest清单需要确定一下 以免因为某些原因导致写入错误问题

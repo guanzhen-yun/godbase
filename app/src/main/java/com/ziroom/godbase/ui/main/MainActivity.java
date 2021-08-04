@@ -1,12 +1,13 @@
-package com.ziroom.godbase;
+package com.ziroom.godbase.ui.main;
 
 import android.view.View;
-import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ziroom.base.BaseActivity;
+import com.ziroom.base.RouterUtils;
+import com.ziroom.godbase.R;
 import com.ziroom.godbase.routers.RouterConstants;
-import com.ziroom.godbase.service.ChangeEnvironmentManager;
+import com.ziroom.godbase.util.ToastUtils;
 
 import butterknife.OnClick;
 
@@ -19,15 +20,15 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     public void getMvpResult(String result) {
-        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+        ToastUtils.showShortToast(result);
     }
 
-    @OnClick({R.id.tv, R.id.tv_exchange})
+    @OnClick({R.id.tv, R.id.tv_config})
     public void onViewClicked(View v) {
         if(v.getId() == R.id.tv) {
             mPresenter.sendMvpRequest();
         } else {
-            ChangeEnvironmentManager.getInstance().saveCurrentEnviroment((1 - ChangeEnvironmentManager.getInstance().getIsDebug()));
+            RouterUtils.jump(RouterConstants.App.Config);
         }
     }
 
@@ -39,5 +40,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     public MainPresenter getPresenter() {
         return new MainPresenter(this);
+    }
+
+    @Override
+    public boolean isSetDarkStatusFrontColor() {
+        return true;
     }
 }

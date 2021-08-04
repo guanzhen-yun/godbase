@@ -28,6 +28,9 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
         if(!isNotFitStatus()) {
             StatusBarUtil.with(this).init();
             findViewById(android.R.id.content).setPadding(0, StatusBarUtil.getStatusBarHeight(this), 0, 0);
+            if(isSetDarkStatusFrontColor()) {
+                StatusBarUtil.setStatusFrontColorDark(this);
+            }
         }
         mIsRegistEventbus = registEventBus();
         if (mIsRegistEventbus) {
@@ -92,6 +95,10 @@ public abstract class BaseActivity<T> extends LifeCircleMvpActivity {
     }
 
     public boolean registEventBus() {
+        return false;
+    }
+
+    public boolean isSetDarkStatusFrontColor() {
         return false;
     }
 }

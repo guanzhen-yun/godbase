@@ -1,11 +1,10 @@
-package com.ziroom.godbase;
+package com.ziroom.godbase.ui.main;
 
 import com.ziroom.godbase.model.InkeListDo;
 import com.ziroom.godbase.service.AppService;
 import com.ziroom.mvp.base.BaseMvpPresenter;
 import com.ziroom.net.ApiUtil;
 import com.ziroom.net.OnResponseListener;
-import com.ziroom.net.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +32,11 @@ public class MainPresenter extends BaseMvpPresenter<MainContract.IView> implemen
 
             @Override
             public void onNext(ArrayList<InkeListDo> entity) {
-                mView.getMvpResult("获取列表成功");
+                if(entity != null && entity.size() > 0) {
+                    mView.getMvpResult("第一个用户为" + entity.get(0).getName());
+                } else {
+                    mView.getMvpResult("用户列表为空");
+                }
             }
         });
     }

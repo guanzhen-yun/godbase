@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_env"
+        android:text="当前环境: "
+        android:padding="20dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="切换至测试环境"
+        android:onClick="textEnv"
+        android:padding="20dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="切换至正式环境"
+        android:onClick="releaseEnv"
+        android:padding="20dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/tv_log"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Log开关-开"
+            android:padding="20dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_openorclose_log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击切换"
+            android:padding="20dp"
+            android:onClick="clicklog"
+            />
+    </LinearLayout>
+
+
+
+</LinearLayout>

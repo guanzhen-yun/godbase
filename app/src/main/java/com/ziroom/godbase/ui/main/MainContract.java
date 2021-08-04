@@ -1,4 +1,4 @@
-package com.ziroom.godbase;
+package com.ziroom.godbase.ui.main;
 
 import com.ziroom.mvp.ILifeCircle;
 import com.ziroom.mvp.IMvpView;

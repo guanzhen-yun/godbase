@@ -1,6 +1,9 @@
 package com.ziroom.godbase.service;
 
+import android.text.TextUtils;
+
 import com.ziroom.godbase.BuildConfig;
+import com.ziroom.godbase.util.SharedUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,12 +19,22 @@ public class Host {
 
     public static final String commonHostOther = "Domain-Name: " + otherHostKey;
 
+    //测试环境
+    public static final String commonHostDev = "http://192.168.19.161:8080/";
+    //正式环境
+    public static final String commonHostRelease = "http://api.abc.service/";
+
+    public static final String DEV = "dev";//测试环境
+    public static final String RELEASE = "release";//正式环境
+
     public static String getCommonHost() {
-        return BuildConfig.DOMAIN_NAME;
+        String hostEnv = SharedUtils.getInstance().getString(SharedUtils.ENV);
+        return TextUtils.isEmpty(hostEnv) ? BuildConfig.DOMAIN_NAME : hostEnv;
     }
 
     public static String getOtherHost() {
-        return BuildConfig.DOMAIN_NAME_OTHER;
+        String otherHostDev = SharedUtils.getInstance().getString(SharedUtils.ENV_OTHER);
+        return TextUtils.isEmpty(otherHostDev) ? BuildConfig.DOMAIN_NAME_OTHER : otherHostDev;
     }
 
     private static final Map<String, String> mHosts = new HashMap<>();
