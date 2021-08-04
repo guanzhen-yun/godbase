@@ -1,5 +1,6 @@
 package com.ziroom.godbase.service;
 
+import com.ziroom.godbase.model.FileDo;
 import com.ziroom.godbase.model.InkeListDo;
 import com.ziroom.net.bean.Result;
 
@@ -18,4 +19,8 @@ public interface AppService {
     @Headers({Host.commonHostDomain})
     @GET("inke/personList")
     Observable<Result<ArrayList<InkeListDo>>> getRequest(@QueryMap Map<String, String> map);
+
+    @Headers({Host.commonHostDomain})
+    @GET("inke/createFileRequest")
+    Observable<Result<FileDo>> createFileRequest(@QueryMap Map<String, String> map);
 }

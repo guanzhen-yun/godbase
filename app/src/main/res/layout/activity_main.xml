@@ -22,4 +22,12 @@
         android:padding="30dp"
         />
 
+    <TextView
+        android:id="@+id/tv_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="创建一个java类"
+        android:padding="30dp"
+        />
+
 </LinearLayout>

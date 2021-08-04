@@ -39,9 +39,8 @@ class MvpModelTask extends DefaultTask {
         String rootDir = project.projectDir
         rootDir = rootDir.replace(File.separator + "app", "")
         println("rootDir: " + rootDir)
-
-        if(allPath.contains(".")) {
-            println("contains: ")
+        if(allPath == null || "".equals(allPath)) {
+            return
         }
 
         String allDir = rootDir + File.separator + allPath.replace(".", "/") + File.separator
