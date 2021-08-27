@@ -8,6 +8,7 @@ import com.ziroom.base.RouterUtils;
 import com.ziroom.godbase.R;
 import com.ziroom.godbase.model.FileDo;
 import com.ziroom.godbase.routers.RouterConstants;
+import com.ziroom.godbase.ui.SplashActivity;
 import com.ziroom.godbase.util.ToastUtils;
 import com.ziroom.net.LogUtils;
 
@@ -29,7 +30,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         } else if (v.getId() == R.id.tv_config) {
             RouterUtils.jump(RouterConstants.App.Config);
         } else if (v.getId() == R.id.tv_create) {
-            mPresenter.createFileRequest("godbase", "app.src.main", "java.com.ziroom.godbase.ui", "TestActivity");
+            mPresenter.createFileRequest("/Users/guanzhen/godbase/app/src/main/java/com/ziroom/godbase/ui", "TestActivity");
         }
     }
 

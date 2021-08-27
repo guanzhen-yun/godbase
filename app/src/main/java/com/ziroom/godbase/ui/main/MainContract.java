@@ -15,6 +15,6 @@ public interface MainContract {
 
     interface IPresenter extends ILifeCircle {
         void sendMvpRequest();
-        void createFileRequest(String projectName, String manifestPath, String classPath, String className);
+        void createFileRequest(String classPath, String className);
     }
 }

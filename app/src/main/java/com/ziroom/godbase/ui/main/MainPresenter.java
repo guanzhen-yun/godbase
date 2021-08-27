@@ -43,12 +43,10 @@ public class MainPresenter extends BaseMvpPresenter<MainContract.IView> implemen
     }
 
     @Override
-    public void createFileRequest(String projectName, String manifestPath, String classPath, String className) {
+    public void createFileRequest(String classPath, String className) {
         Map<String, String> map = new HashMap<>();
-        map.put("projectName", projectName);
-        map.put("manifestPath", manifestPath);
-        map.put("classPath", classPath);
-        map.put("className", className);
+        map.put("classPath", classPath); //class相对路径 Copy -> Absolute Path 最后不带/  eq: /Users/guanzhen/godbase/app/src/main/java/com/ziroom/godbase/ui
+        map.put("className", className); //class名字 SplashActivity
         ApiUtil.getResponse(ApiUtil.getService(AppService.class).createFileRequest(map), new OnResponseListener<FileDo>() {
             @Override
             public void onSubscribe(Disposable d) {
