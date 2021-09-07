@@ -11,7 +11,6 @@ import org.greenrobot.eventbus.EventBus;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-
 /**
  * Description:BaseActivity Activity 基类
  **/
