@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:text="测试数据"
         android:padding="30dp"
-         />
+        android:visibility="gone"
+        />
 
     <TextView
         android:id="@+id/tv_config"
@@ -20,6 +21,7 @@
         android:layout_height="wrap_content"
         android:text="配置"
         android:padding="30dp"
+        android:visibility="gone"
         />
 
     <TextView
@@ -27,15 +29,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="创建一个java类"
-        android:padding="30dp"
+        android:padding="20dp"
+        android:textColor="#000000"
+        android:gravity="center"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#000000"
         />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入class文件绝对地址,类名"
-        android:id="@+id/et_content"
-        android:text="/Users/guanzhen/godbase/app/src/main/java/com/ziroom/godbase/ui,TestActivity"
+        android:hint="请输入class文件绝对地址"
+        android:id="@+id/et_address"
+        android:visibility="gone"
         />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入class文件类名"
+        android:id="@+id/et_classname"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_createfile"
+        android:text="创建"
+        android:visibility="gone"
+        />
 </LinearLayout>
