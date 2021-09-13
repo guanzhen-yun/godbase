@@ -30,4 +30,12 @@
         android:padding="30dp"
         />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入class文件绝对地址,类名"
+        android:id="@+id/et_content"
+        android:text="/Users/guanzhen/godbase/app/src/main/java/com/ziroom/godbase/ui,TestActivity"
+        />
+
 </LinearLayout>

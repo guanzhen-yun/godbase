@@ -1,6 +1,8 @@
 package com.ziroom.godbase.ui.main;
 
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.ziroom.base.BaseActivity;
@@ -14,6 +16,7 @@ import com.ziroom.net.LogUtils;
 
 import java.io.File;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -22,6 +25,8 @@ import butterknife.OnClick;
 
 @Route(path = RouterConstants.App.Main)
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.IView {
+    @BindView(R.id.et_content)
+    EditText mEtContent;
 
     @OnClick({R.id.tv, R.id.tv_config, R.id.tv_create})
     public void onViewClicked(View v) {
@@ -30,7 +35,16 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         } else if (v.getId() == R.id.tv_config) {
             RouterUtils.jump(RouterConstants.App.Config);
         } else if (v.getId() == R.id.tv_create) {
-            mPresenter.createFileRequest("/Users/guanzhen/godbase/app/src/main/java/com/ziroom/godbase/ui", "TestActivity");
+            String s = mEtContent.getText().toString();
+            if(!TextUtils.isEmpty(s)) {
+                if(!s.contains(",")) {
+                    ToastUtils.showShortToast("类绝对地址或者类名应以,拼接");
+                } else {
+                    String address = s.split(",")[0];
+                    String className = s.split(",")[1];
+                    mPresenter.createFileRequest(address, className);
+                }
+            }
         }
     }
 
