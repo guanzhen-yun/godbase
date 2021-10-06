@@ -3,15 +3,21 @@ package com.ziroom.godbase.ui.main;
 import com.ziroom.godbase.model.FileDo;
 import com.ziroom.godbase.model.InkeListDo;
 import com.ziroom.godbase.service.AppService;
+import com.ziroom.godbase.util.ToastUtils;
 import com.ziroom.mvp.base.BaseMvpPresenter;
 import com.ziroom.net.ApiUtil;
 import com.ziroom.net.OnResponseListener;
+import com.ziroom.net.exception.ApiException;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.disposables.Disposable;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 /**
  * Description:MainPresenter presenter
@@ -58,6 +64,30 @@ public class MainPresenter extends BaseMvpPresenter<MainContract.IView> implemen
                 if(entity != null) {
                     mView.createFileResult(entity);
                 }
+            }
+        });
+    }
+
+    @Override
+    public void uploadFile(File file) {
+        RequestBody requestFile = RequestBody.create(MediaType.get("multipart/form-data"), file);
+        MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
+
+        ApiUtil.getResponse(ApiUtil.getService(AppService.class).uploadFile(filePart), new OnResponseListener<FileDo>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                addDisposable(d);
+            }
+
+            @Override
+            public void onNext(FileDo entity) {
+                ToastUtils.showShortToast("上传成功" + entity.getFileResult());
+            }
+
+            @Override
+            public void onError(ApiException e) {
+                super.onError(e);
+                ToastUtils.showShortToast("上传失败" + e.getDisplayMessage());
             }
         });
     }

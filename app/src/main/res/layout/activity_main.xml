@@ -63,4 +63,18 @@
         android:text="创建"
         android:visibility="gone"
         />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_download"
+        android:text="下载classes2.dex文件"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_upload"
+        android:text="上传文件"
+        />
 </LinearLayout>

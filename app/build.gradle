@@ -27,7 +27,7 @@ android {
             debuggable true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             zipAlignEnabled false
-            buildConfigField("String", "DOMAIN_NAME", "\"http://192.168.19.161:8080/\"")
+            buildConfigField("String", "DOMAIN_NAME", "\"http://192.168.2.12:8080/\"")
             buildConfigField("String", "DOMAIN_NAME_OTHER", "\"http://api.abc.service/\"")
         }
         release {

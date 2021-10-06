@@ -20,7 +20,7 @@ public class Host {
     public static final String commonHostOther = "Domain-Name: " + otherHostKey;
 
     //测试环境
-    public static final String commonHostDev = "http://192.168.19.161:8080/";
+    public static final String commonHostDev = "http://192.168.2.12:8080/";
     //正式环境
     public static final String commonHostRelease = "http://api.abc.service/";
 

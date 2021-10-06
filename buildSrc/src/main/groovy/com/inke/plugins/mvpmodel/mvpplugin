@@ -16,9 +16,9 @@
 2.获取到这个文件的全路径allPath
 3.获取到Manifest的路径
 
-如: allPath "app.src.main.java.com.inke.inkebone"
-    className "TextActivity"
-    manifestPath "app.src.main"
+如: classPath "/Users/guanzhen/godbase/app/src/main/java/com/ziroom/godbase/ui" --> Copy Absolute Path
+    className "TestActivity"
+
 4.根据所需设置isCreateNewPackage isCreateMvp
 5.在Tasks列表的selftask找到mvpModel 点击即可生成所需文件  (下次可以在历史task里面找到)
 6.isCreateNewPackage 是否需要创建新的文件夹 选择false则在该目录下创建 不生成新的文件夹

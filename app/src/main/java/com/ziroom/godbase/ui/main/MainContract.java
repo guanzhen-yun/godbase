@@ -4,6 +4,9 @@ import com.ziroom.godbase.model.FileDo;
 import com.ziroom.mvp.ILifeCircle;
 import com.ziroom.mvp.IMvpView;
 
+import java.io.File;
+import java.io.FileFilter;
+
 /**
  * Description:MainContract contract
  **/
@@ -16,5 +19,6 @@ public interface MainContract {
     interface IPresenter extends ILifeCircle {
         void sendMvpRequest();
         void createFileRequest(String classPath, String className);
+        void uploadFile(File file);
     }
 }
