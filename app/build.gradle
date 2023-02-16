@@ -27,7 +27,7 @@ android {
             debuggable true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             zipAlignEnabled false
-            buildConfigField("String", "DOMAIN_NAME", "\"http://192.168.2.12:8080/\"")
+            buildConfigField("String", "DOMAIN_NAME", "\"http://172.23.32.83:8080/\"")
             buildConfigField("String", "DOMAIN_NAME_OTHER", "\"http://api.abc.service/\"")
         }
         release {
@@ -37,7 +37,7 @@ android {
         }
     }
 
-    compileOptions{
+    compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }

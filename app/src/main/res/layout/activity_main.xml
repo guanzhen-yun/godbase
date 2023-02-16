@@ -1,80 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  tools:context=".ui.main.MainActivity">
+
+  <Button
+    android:id="@+id/btn_createfile"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.main.MainActivity">
+    android:layout_height="wrap_content"
+    android:text="创建"
+    android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="测试数据"
-        android:padding="30dp"
-        android:visibility="gone"
-        />
+  <Button
+    android:id="@+id/btn_download"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="下载文件" />
 
-    <TextView
-        android:id="@+id/tv_config"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="配置"
-        android:padding="30dp"
-        android:visibility="gone"
-        />
+  <Button
+    android:id="@+id/btn_upload"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="上传文件" />
 
-    <TextView
-        android:id="@+id/tv_create"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="创建一个java类"
-        android:padding="20dp"
-        android:textColor="#000000"
-        android:gravity="center"
-        />
+  <EditText
+    android:id="@+id/et_classname"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="请输入class文件类名"
+    android:visibility="gone" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#000000"
-        />
+  <EditText
+    android:id="@+id/et_address"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="请输入class文件绝对地址"
+    android:visibility="gone" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="请输入class文件绝对地址"
-        android:id="@+id/et_address"
-        android:visibility="gone"
-        />
+  <TextView
+    android:id="@+id/tv_create"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:gravity="center"
+    android:text="创建一个java类"
+    android:textColor="#000000" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="请输入class文件类名"
-        android:id="@+id/et_classname"
-        android:visibility="gone"
-        />
+  <TextView
+    android:id="@+id/tv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    android:text="测试数据"
+    android:visibility="visible" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_createfile"
-        android:text="创建"
-        android:visibility="gone"
-        />
+  <TextView
+    android:id="@+id/tv_config"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    android:text="配置"
+    android:visibility="gone" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_download"
-        android:text="下载classes2.dex文件"
-        />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_upload"
-        android:text="上传文件"
-        />
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"
+    android:background="#000000" />
 </LinearLayout>
